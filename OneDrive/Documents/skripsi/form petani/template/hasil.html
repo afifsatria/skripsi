@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <title>
+
+    </title>
+    <body>
+        <div class="shadow-none p-3 mb-5 bg-light rounded">
+            <div class="container-fluid">
+                <div class="border border p-2 mb-2 border-opacity-25">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    {% block content %}{% endblock %}
+                    <div>
+                        <p  class="fs-2" style="text-align: center;"><b>Terimakasih Data Sudah Terisi</b></p>
+                    </div>
+                    <div class="container text-center">
+                        <p class="fs-2" style="text-align: center;">Petani Cluster :</p>
+                        <p class="fs-4" style="text-align: center;">{{hasil_prediksi}}</p>
+                    </div>
+                    <div class="d-grid gap-2 d-md-block" style="text-align: center;">
+                        <a href="/profilepetani" type="button" class="btn btn-success">Predict</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </body>
+</html>
